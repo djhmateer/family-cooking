@@ -22,7 +22,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-   const currentYear = new Date().getFullYear();
+   const currentYearX = new Date().getFullYear();
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
@@ -102,7 +102,7 @@ export default function RootLayout({
           {/* <Footer /> */}
           <footer className='border-t'>
       <div className='p-5 flex-center'>
-        {currentYear} Family-Cooking Recipes. All Rights reserved. Have a nice day!
+        {currentYearX} Family-Cooking Recipes. All Rights reserved. Have a nice day!
       </div>
     </footer>
 
