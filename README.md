@@ -8,10 +8,18 @@
 - Zod
 - React Hook Form
 
+For the above I'm aiming for the simplest possible implementations
+
+Inspired by [Traversy Media ecommerce sample](https://www.traversymedia.com/products/next-js-ecommerce/) for ShadCN setup and overall UI concept.
+
 Then
 
 - Auth
 - tRPC
+
+Am using - Github and Vercel for continuous deployment.
+
+Am doing markdown user stores below inspired by [Dave Gray Youtube series](https://www.youtube.com/watch?v=djDgTYrFMAY)
 
 ## User Stories
 
