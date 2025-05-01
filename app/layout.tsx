@@ -58,13 +58,13 @@ export default function RootLayout({
                 <Button asChild variant="ghost">
                   <Link href="/faq">
                     <Info />
-                    FAQ (static pre fetched!)
+                    FAQ
                   </Link>
                 </Button>
                 <Button asChild variant="ghost">
                   <Link href="/seedpage">
                     <Info />
-                    SeedPage (dynamic)
+                    SeedDB
                   </Link>
                 </Button>
 
