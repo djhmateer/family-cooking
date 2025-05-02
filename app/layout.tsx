@@ -52,9 +52,9 @@ export default function RootLayout({
                 {/* Just want a link inside the button, so not a click handler. 
               So use asChild. */}
                 <Button asChild variant="ghost">
-                  <Link href="/faq">
+                  <Link href="/about">
                     <Info />
-                    FAQ
+                    About
                   </Link>
                 </Button>
                 <Button asChild variant="ghost">

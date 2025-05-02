@@ -1,9 +1,13 @@
 export const dynamic = "force-dynamic";
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+import sampleData from "@/db/traversy-sample-data";
 
-const HomePage = async () => {
-  await delay(2000);
+// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const HomePage = () => {
+  // await delay(2000);
+  console.log("log data is ", sampleData);
+
   return (
     <div>
       <h1>Hello World!</h1>
