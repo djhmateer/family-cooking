@@ -28,13 +28,17 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         {/* 
           h-screen: sets height to 100vh (full viewport height)
-          flex-col: sets flex direction to column (stacks children vertically) */}
+          flex-col: sets flex direction to column (stacks children vertically in columns) */}
         <div className="flex h-screen flex-col">
           {/* <Header /> */}
           <header className="w-full border-b">
-            <div className="wrapper flex-between">
+            {/* <div className="wrapper flex-between"> */}
+            {/* <div className="max-w-7xl lg:mx-auto p-5 md:px-10 w-full flex-between"> */}
+            <div className="max-w-7xl lg:mx-auto p-5 md:px-10 w-full flex justify-between items-center">
               <div className="flex-start">
-                <Link href="/" className="flex-start">
+                {/* this was a utility function */}
+                {/* <Link href="/" className="flex-start"> */}
+                <Link href="/" className="flex justify-start items-center">
                   <Image
                     // get a warning in console if don't set this.. I didn't.
                     // priority={true}
@@ -94,13 +98,13 @@ export default function RootLayout({
           </header>
 
           {/* flex-1: allows this element to grow and take up remaining space which creates a sticky footer
-            wrapper: custom class in globals.css, not a Tailwind class which does:
-           <main className="flex-1 max-w-7xl lg:mx-auto p-5 md:px-10 w-full"> */}
-          <main className="flex-1 wrapper">{children}</main>
+          {/* <main className="flex-1 wrapper">{children}</main> */}
+          <main className="flex-1 max-w-7xl lg:mx-auto p-5 md:px-10 w-full">{children}</main>
 
           {/* <Footer /> */}
           <footer className="border-t">
-            <div className="p-5 flex-center">
+            {/* <div className="p-5 flex-center"> */}
+            <div className="p-5 flex justify-center items-center">
               {currentYearX} Family-Cooking Recipes. All Rights reserved. Have a
               nice day!
             </div>
