@@ -32,16 +32,11 @@ export default function RootLayout({
         <div className="flex h-screen flex-col">
           {/* <Header /> */}
           <header className="w-full border-b">
-            {/* <div className="wrapper flex-between"> */}
-            {/* <div className="max-w-7xl lg:mx-auto p-5 md:px-10 w-full flex-between"> */}
             <div className="max-w-7xl lg:mx-auto p-5 md:px-10 w-full flex justify-between items-center">
               <div className="flex-start">
-                {/* this was a utility function */}
-                {/* <Link href="/" className="flex-start"> */}
                 <Link href="/" className="flex justify-start items-center">
                   <Image
-                    // get a warning in console if don't set this.. I didn't.
-                    // priority={true}
+                    priority={true}
                     src="/images/promo.jpg"
                     width={48}
                     height={48}
@@ -56,7 +51,6 @@ export default function RootLayout({
               <div className="space-x-2">
                 {/* Just want a link inside the button, so not a click handler. 
               So use asChild. */}
-
                 <Button asChild variant="ghost">
                   <Link href="/faq">
                     <Info />
@@ -69,14 +63,9 @@ export default function RootLayout({
                     SeedDB
                   </Link>
                 </Button>
-
                 <Button asChild variant="ghost">
                   <Link href="/cart">
-                    {/* Icon to the left of the text */}
-                    {/* <ShoppingCart /> */}
                     <CookingPot />
-                    {/* Text */}
-                    {/* All Recipes */}
                     Not Found
                   </Link>
                 </Button>
@@ -97,13 +86,14 @@ export default function RootLayout({
             </div>
           </header>
 
-          {/* flex-1: allows this element to grow and take up remaining space which creates a sticky footer
-          {/* <main className="flex-1 wrapper">{children}</main> */}
-          <main className="flex-1 max-w-7xl lg:mx-auto p-5 md:px-10 w-full">{children}</main>
+          {/* flex-1: allows this element to grow and take up remaining space which creates a sticky footer */}
+          <main className="flex-1 max-w-7xl lg:mx-auto p-5 md:px-10 w-full">
+            {children}
+          </main>
 
           {/* <Footer /> */}
+          {/* border-t: adds a border grey line to the top of the footer */}
           <footer className="border-t">
-            {/* <div className="p-5 flex-center"> */}
             <div className="p-5 flex justify-center items-center">
               {currentYearX} Family-Cooking Recipes. All Rights reserved. Have a
               nice day!
