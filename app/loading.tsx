@@ -12,13 +12,14 @@ const Loading = () => {
         width: "100vw",
       }}
     >
-      <Image
+        Loading...
+      {/* <Image
         src={loader}
         width={100}
         height={100}
         alt="Loading...."
         unoptimized
-      />
+      /> */}
     </div>
   );
 };

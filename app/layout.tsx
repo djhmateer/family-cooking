@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 // import "@/assets/styles/globals.css";
-import "@/app/globals.css";
+// import "@/app/globals.css";
+import "./globals.css";
 
 import { UserIcon, CookingPot, Info, Bug } from "lucide-react";
 import Image from "next/image";
