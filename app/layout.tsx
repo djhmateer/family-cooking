@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// import "@/assets/styles/globals.css";
-// import "@/app/globals.css";
 import "./globals.css";
 
 import { UserIcon, CookingPot, Info, Bug } from "lucide-react";
@@ -24,7 +22,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-   const currentYearX = new Date().getFullYear();
+  const currentYearX = new Date().getFullYear();
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
@@ -32,7 +30,6 @@ export default function RootLayout({
           h-screen: sets height to 100vh (full viewport height)
           flex-col: sets flex direction to column (stacks children vertically) */}
         <div className="flex h-screen flex-col">
-
           {/* <Header /> */}
           <header className="w-full border-b">
             <div className="wrapper flex-between">
@@ -102,12 +99,12 @@ export default function RootLayout({
           <main className="flex-1 wrapper">{children}</main>
 
           {/* <Footer /> */}
-          <footer className='border-t'>
-      <div className='p-5 flex-center'>
-        {currentYearX} Family-Cooking Recipes. All Rights reserved. Have a nice day!
-      </div>
-    </footer>
-
+          <footer className="border-t">
+            <div className="p-5 flex-center">
+              {currentYearX} Family-Cooking Recipes. All Rights reserved. Have a
+              nice day!
+            </div>
+          </footer>
         </div>
       </body>
     </html>
