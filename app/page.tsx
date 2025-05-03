@@ -31,7 +31,6 @@ const HomePage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {limitedData!.map((product: any) => (
             // React needs a unique key to identify each element in a list
-            // TODO - think about not using a separate component here..simplify
             // <ProductCard key={product.slug} product={product} />
             <div key={product.slug}>{product.name}</div>
           ))}
