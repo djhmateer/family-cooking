@@ -9,11 +9,9 @@ import sampleData from "./traversy-sample-data";
 const client = postgres(process.env.POSTGRES_URL_NON_POOLING!);
 
 async function seedProducts() {
-  await client`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-
   await client`
     CREATE TABLE IF NOT EXISTS products (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       image_url VARCHAR(255) NOT NULL
     );
