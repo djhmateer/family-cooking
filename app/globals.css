@@ -40,6 +40,7 @@
 }
 
 /* setting variables for the theme eg background colour, text-foreground */
+/* text-destructive: red text color eg for out of stock */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
