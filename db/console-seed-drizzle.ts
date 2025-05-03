@@ -2,31 +2,34 @@
 // npx tsx db/console-seed-drizzle
 
 import "dotenv/config";
-import { drizzle } from 'drizzle-orm/postgres-js';
+import { drizzle } from "drizzle-orm/postgres-js";
 // import sampleData from "./traversy-sample-data";
 import { productsTable } from "./drizzle-schema";
-
 
 const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
 
 async function main() {
-  const product: typeof productsTable.$inferInsert = {
-    name: 'Polo Sporting Stretch Shirt',
-    slug: 'polo-sporting-stretch-shirt',
+ 
+  await db.insert(productsTable).values({
+    name: "Polo Sporting Stretch Shirt",
+    slug: "polo-sporting-stretch-shirt",
     category: "Men's Dress Shirts",
-    brand: 'Polo',
-    description: 'Classic Polo style with modern comfort',
-    images: ['/images/sample-products/p1-1.jpg', '/images/sample-products/p1-2.jpg'], //jsonb
+    brand: "Polo",
+    description: "Classic Polo style with modern comfort",
+    images: [
+      "/images/sample-products/p1-1.jpg",
+      "/images/sample-products/p1-2.jpg",
+    ],
     stock: 5,
-    price: "59.99", // 
-    rating: "4.5",  // 
+    price: "59.99",
+    rating: "4.5",
     numReviews: 10,
     isFeatured: true,
-    banner: 'banner-1.jpg',
-  };
-
-  await db.insert(productsTable).values(product);
-  console.log('New product created!')
+    banner: "banner-1.jpg",
+    // this doesn't get red squiggly but values above does, and foo is in the error
+    // foo: "bar",
+  });
+  console.log("New product created!");
 
   // update
   // const users = await db.select().from(productsTable);
