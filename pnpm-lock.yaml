@@ -20,6 +20,9 @@ importers:
       drizzle-orm:
         specifier: ^0.43.1
         version: 0.43.1(postgres@3.4.5)
+      drizzle-zod:
+        specifier: ^0.7.1
+        version: 0.7.1(drizzle-orm@0.43.1(postgres@3.4.5))(zod@3.24.3)
       lucide-react:
         specifier: ^0.507.0
         version: 0.507.0(react@19.1.0)
@@ -38,6 +41,9 @@ importers:
       tailwind-merge:
         specifier: ^3.2.0
         version: 3.2.0
+      zod:
+        specifier: ^3.24.3
+        version: 3.24.3
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.1
@@ -1240,6 +1246,12 @@ packages:
         optional: true
       sqlite3:
         optional: true
+
+  drizzle-zod@0.7.1:
+    resolution: {integrity: sha512-nZzALOdz44/AL2U005UlmMqaQ1qe5JfanvLujiTHiiT8+vZJTBFhj3pY4Vk+L6UWyKFfNmLhk602Hn4kCTynKQ==}
+    peerDependencies:
+      drizzle-orm: '>=0.36.0'
+      zod: '>=3.0.0'
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -3317,6 +3329,11 @@ snapshots:
   drizzle-orm@0.43.1(postgres@3.4.5):
     optionalDependencies:
       postgres: 3.4.5
+
+  drizzle-zod@0.7.1(drizzle-orm@0.43.1(postgres@3.4.5))(zod@3.24.3):
+    dependencies:
+      drizzle-orm: 0.43.1(postgres@3.4.5)
+      zod: 3.24.3
 
   dunder-proto@1.0.1:
     dependencies:

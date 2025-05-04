@@ -1,12 +1,17 @@
+// db/seed/console-seed-drizzle.ts
+
 // To run this console script
-// npx tsx db/console-seed-drizzle
+// npx tsx db/seed/console-seed-drizzle
 
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/postgres-js";
 import sampleData from "./traversy-sample-data";
 import { productsTable } from "../drizzle-schema";
+import * as schema from "../drizzle-schema";
+import { desc } from "drizzle-orm";
 
-const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
+// const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
+const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!, { schema });
 
 async function main() {
   await db.insert(productsTable).values({
@@ -45,7 +50,7 @@ async function main() {
       stock: product.stock,
       // pass to drizzle as string even though it expects a numeric type
       price: String(product.price),
-      // minefield, and will probably store prices as pence/cents anyway to avoid this. 
+      // minefield, and will probably store prices as pence/cents anyway to avoid this.
       // price: Number(product.price),
       rating: String(product.rating),
       numReviews: product.numReviews,
@@ -54,8 +59,20 @@ async function main() {
     };
 
     await db.insert(productsTable).values(productFoo);
-
   }
+
+  // can I infer the type of a drizzle select?
+  // typeof productsTable.$inferSelect | undefined
+  const bar = await db.query.productsTable.findFirst({
+    orderBy: [desc(productsTable.createdAt)],
+  });
+
+  // this is pure dizzle ORM and nothing to do with zod.
+  // firstProduct is of type typeof productsTable.$inferSelect or undefined
+  // forcing it to be of type typeof productsTable.$inferSelect
+  const firstProduct: typeof productsTable.$inferSelect = bar!;
+  console.log("firstProduct", firstProduct);
+  console.log("firstProduct name", firstProduct.name);
 
   // update
   // const users = await db.select().from(productsTable);
