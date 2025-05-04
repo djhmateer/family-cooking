@@ -1,20 +1,21 @@
+// app/page.tsx
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 // import sampleData from "@/db/traversy-sample-data";
-import { getLatestProducts } from "@/db/product.actions";
+import { getLatestProducts } from "@/db/db.actions";
 
 const HomePage = async () => {
   const latestProducts = await getLatestProducts();
 
-  console.log("log data is ", latestProducts);
+  // console.log("log data is ", latestProducts);
 
   // todo should be an array of type Product
   let limitedData: any[];
   let showData = true;
   if (latestProducts.length > 0) {
-    limitedData = latestProducts.slice(0, 4);
+    limitedData = latestProducts.slice(0, 5);
   } else {
     showData = false;
   }

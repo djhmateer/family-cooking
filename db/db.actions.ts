@@ -1,3 +1,4 @@
+// db/product.actions.ts
 "use server";
 
 import { productsTable } from "./drizzle-schema";
@@ -5,8 +6,6 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import { desc } from "drizzle-orm";
 // import all tables needed for Object Based Syntax
 import * as schema from "./drizzle-schema";
-
-// get latest products
 
 export async function getLatestProducts() {
 
@@ -22,7 +21,8 @@ export async function getLatestProducts() {
   const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!, { schema });
   const products = await db.query.productsTable.findMany({
     orderBy: [desc(productsTable.createdAt)],
-    limit: 3,
+    limit: 5,
+
   });
   return products;
 }
