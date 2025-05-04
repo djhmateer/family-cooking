@@ -4,7 +4,7 @@
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/postgres-js";
 import sampleData from "./traversy-sample-data";
-import { productsTable } from "./drizzle-schema";
+import { productsTable } from "../drizzle-schema";
 
 const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
 
