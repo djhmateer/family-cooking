@@ -1,4 +1,9 @@
 // ./db/drizzle-schema.ts
+
+// npx drizzle-kit push
+// npx drizzle-kit generate
+// npx drizzle-kit migrate
+
 import {
   pgTable,
   varchar,
@@ -19,6 +24,7 @@ export const productsTable = pgTable("products", {
   brand: varchar("brand", { length: 255 }).notNull(),
   description: text("description").notNull(),
   stock: integer("stock").notNull(),
+  // numeric type in postgres
   price: decimal("price", { precision: 12, scale: 2 }).notNull().default("0"),
   rating: decimal("rating", { precision: 3, scale: 2 }).notNull().default("0"),
   numReviews: integer("num_reviews").notNull().default(0),

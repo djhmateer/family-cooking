@@ -1,0 +1,1 @@
+ALTER TABLE "products" RENAME COLUMN "created_at2" TO "created_at";

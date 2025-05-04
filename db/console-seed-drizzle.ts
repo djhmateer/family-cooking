@@ -3,13 +3,12 @@
 
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/postgres-js";
-// import sampleData from "./traversy-sample-data";
+import sampleData from "./traversy-sample-data";
 import { productsTable } from "./drizzle-schema";
 
 const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!);
 
 async function main() {
- 
   await db.insert(productsTable).values({
     name: "Polo Sporting Stretch Shirt",
     slug: "polo-sporting-stretch-shirt",
@@ -30,6 +29,33 @@ async function main() {
     // foo: "bar",
   });
   console.log("New product created!");
+
+  for (const product of sampleData.products) {
+    console.log("inserting product", product.name);
+
+    // useful to use $insertInsert to debug type problems
+    const productFoo: typeof productsTable.$inferInsert = {
+      name: product.name,
+      slug: product.slug,
+      category: product.category,
+      brand: product.brand,
+      description: product.description,
+      // an array stored as jsonb in postgres
+      images: product.images,
+      stock: product.stock,
+      // pass to drizzle as string even though it expects a numeric type
+      price: String(product.price),
+      // minefield, and will probably store prices as pence/cents anyway to avoid this. 
+      // price: Number(product.price),
+      rating: String(product.rating),
+      numReviews: product.numReviews,
+      isFeatured: product.isFeatured,
+      banner: product.banner,
+    };
+
+    await db.insert(productsTable).values(productFoo);
+
+  }
 
   // update
   // const users = await db.select().from(productsTable);
