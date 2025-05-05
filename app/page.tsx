@@ -4,19 +4,23 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 import { getLatestProducts } from "@/db/db.actions";
-import { selectProductSchemaType } from "@/zod-schemas/product";
-
+// import { selectProductSchemaType } from "@/zod-schemas/product";
+import { productsTable } from "@/db/drizzle-schema";
 const HomePage = async () => {
   const latestProducts = await getLatestProducts();
 
-  // console.log("log data is ", latestProducts);
-
   // let limitedData: any[];
   // an array of type selectProductSchemaType - ie has id, updatedAt etc... everything.
-  let limitedData: selectProductSchemaType[];
+
+  // zod
+  // let limitedData: selectProductSchemaType[];
+
+  // drizzle
+  let limitedData: typeof productsTable.$inferSelect[];
+
   let showData = true;
   if (latestProducts.length > 0) {
-    limitedData = latestProducts.slice(0, 5) as selectProductSchemaType[];
+    limitedData = latestProducts.slice(0, 5);
   } else {
     showData = false;
   }
@@ -33,7 +37,8 @@ const HomePage = async () => {
         // make different number of columns for different screen sizes
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {/* {limitedData!.map((product: any) => ( */}
-          {limitedData!.map((product: selectProductSchemaType) => (
+          {/* {limitedData!.map((product: selectProductSchemaType) => ( */}
+          {limitedData!.map((product: typeof productsTable.$inferSelect) => (
             // This is what ProductCard was
             // <div key={product.slug}>{product.name}</div>
             // Full width with a maximum width of 24rem (sm)

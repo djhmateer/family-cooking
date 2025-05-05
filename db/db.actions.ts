@@ -3,7 +3,7 @@
 
 import { productsTable } from "./drizzle-schema";
 import { drizzle } from "drizzle-orm/postgres-js";
-import { desc } from "drizzle-orm";
+import { desc, InferSelectModel } from "drizzle-orm";
 // import all tables needed for Object Based Syntax
 import * as schema from "./drizzle-schema";
 
@@ -19,10 +19,14 @@ export async function getLatestProducts() {
 
   // Object Based Syntax which is more type safe
   const db = drizzle(process.env.POSTGRES_URL_NON_POOLING!, { schema });
+  
   const products = await db.query.productsTable.findMany({
     orderBy: [desc(productsTable.createdAt)],
     limit: 5,
-
   });
+
+  // this is typed from drizzle productsTable.$inferSelect
+  // console.log("products", products[0].name);
+
   return products;
 }

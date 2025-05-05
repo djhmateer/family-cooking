@@ -1,6 +1,6 @@
-// db/seed-simple.ts
-// To run this console script
-// npx tsx db/console-seed
+// db/seed/console-seed-sql.ts
+
+// npx tsx db/seed/console-seed-sql
 
 import "dotenv/config";
 import postgres from "postgres";

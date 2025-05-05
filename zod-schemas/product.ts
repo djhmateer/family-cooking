@@ -25,8 +25,11 @@ export const insertProductSchema = createInsertSchema(productsTable, {
   // no need for createdAt (auto generated)
 });
 
-// createSelectSchema(productsTable) automatically generates a Zod schema that matches the shape of a row selected from the productsTable in your database.
+// createSelectSchema(productsTable) automatically generates a Zod schema
+// that matches the shape of a row selected from the productsTable in your database.
 export const selectProductSchema = createSelectSchema(productsTable);
+
+
 
 export type insertProductSchemaType = typeof insertProductSchema._type;
 
